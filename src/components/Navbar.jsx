@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { FcHome, FcAbout, FcBriefcase, FcFlashOn, FcBusinessContact, FcCommandLine, FcDocument } from 'react-icons/fc';
+import { FcHome, FcAbout, FcBriefcase } from 'react-icons/fc';
+import { FaLinkedin } from 'react-icons/fa';
+import logo from '../assets/Logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,9 +12,6 @@ const Navbar = () => {
     { id: 'home', label: 'Home', icon: <FcHome className="text-xl" /> },
     { id: 'about', label: 'About', icon: <FcAbout className="text-xl" /> },
     { id: 'projects', label: 'Projects', icon: <FcBriefcase className="text-xl" /> },
-    { id: 'skills', label: 'Skills', icon: <FcFlashOn className="text-xl" /> },
-    { id: 'experience', label: 'Experience', icon: <FcBusinessContact className="text-xl" /> },
-    { id: 'contact', label: 'Contact', icon: <FcBusinessContact className="text-xl" /> },
   ];
 
   useEffect(() => {
@@ -50,12 +49,7 @@ const Navbar = () => {
           className="flex items-center space-x-3 cursor-pointer"
           onClick={() => scrollToSection('home')}
         >
-          <div className="w-12 h-12 rounded-kawaii bg-gradient-to-br from-kawaii-blue to-kawaii-purple flex items-center justify-center text-2xl shadow-kawaii border border-white/50">
-            <FcCommandLine className="text-3xl" />
-          </div>
-          <span className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark to-kawaii-purple-dark">
-            Lucas.dev
-          </span>
+          <img src={logo} alt="Logo" className="w-30 h-16 rounded-kawaii" />
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -79,6 +73,22 @@ const Navbar = () => {
               {item.label}
             </motion.button>
           ))}
+          
+          {/* LinkedIn Link */}
+          <motion.a
+            href="https://www.linkedin.com/in/lucas-cao-a08a6b332"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 py-2 rounded-kawaii font-medium transition-all duration-300 flex items-center text-blue-600 hover:bg-blue-50 hover:shadow-kawaii"
+          >
+            <FaLinkedin className="text-xl mr-2" />
+            LinkedIn
+          </motion.a>
         </div>
 
         {/* Mobile Menu Button */}

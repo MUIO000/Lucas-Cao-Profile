@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { FcIdea } from 'react-icons/fc';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import softwareTestingSvg from '../assets/developer-activity/developer-activity-not-css.svg?raw';
 import '../assets/developer-activity/developer-activity-styles.css';
+import Typewriter from './Typewriter';
 
 const Hero = () => {
   const containerVariants = {
@@ -26,9 +27,9 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-15 px-6 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-8 items-center">
           {/* Left: Text Content */}
           
           <motion.div
@@ -54,18 +55,20 @@ const Hero = () => {
               variants={itemVariants}
               className="text-2xl md:text-3xl lg:text-4xl font-display font-semibold text-gray-800"
             >
-              Full Stack Developer
+              Graduate Full Stack Developer
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-800 leading-relaxed max-w-lg font-medium"
+              className="text-2xl text-blue-500 leading-relaxed font-bold whitespace-nowrap"
             >
-              Crafting modern, AI-integrated web applications with{' '}
-              <span className="font-bold text-kawaii-purple-dark">React</span>,{' '}
-              <span className="font-bold text-kawaii-blue-dark">Node.js</span>, and{' '}
-              <span className="font-bold text-kawaii-cyan-dark">clean code</span>. 
-              Currently building the future at JobGen.AI 🚀
+              <Typewriter 
+                text="I can craft modern, AI-integrated web applications!"
+                staticPrefix="I "
+                typingSpeed={50}
+                deletingSpeed={50}
+                pauseTime={2000}
+              />
             </motion.p>
 
             {/* Tech Stack Pills */}
@@ -73,7 +76,7 @@ const Hero = () => {
               variants={itemVariants}
               className="flex flex-wrap gap-3 pt-4"
             >
-              {['React', 'TypeScript', 'Node.js', 'Python', 'AI/ML', 'AWS'].map((tech) => (
+              {['React', 'TailwindCSS', 'Node.js', 'C#', 'Python', 'Java', 'SQL', 'Docker', 'AWS'].map((tech) => (
                 <motion.span
                   key={tech}
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -93,19 +96,20 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-                className="btn-kawaii"
+                className="btn-kawaii flex items-center gap-2 whitespace-nowrap"
               >
-                🚀 View My Work
+                My Projects <FaArrowRight />
               </motion.button>
 
-              <motion.button
+              {/* Contact/Email Button */}
+              <motion.a
+                href="mailto:lucascao1018@gmail.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="btn-kawaii-outline"
+                className="btn-kawaii-outline flex items-center gap-2 whitespace-nowrap"
               >
-                💬 Let's Talk
-              </motion.button>
+                <FaEnvelope /> lucascao1018@gmail.com
+              </motion.a>
             </motion.div>
 
             {/* Social Links */}
@@ -114,13 +118,14 @@ const Hero = () => {
               className="flex gap-4 pt-4"
             >
               {[
-                { icon: <FaLinkedin />, label: 'LinkedIn', url: '#', color: 'text-blue-600' },
-                { icon: <FaGithub />, label: 'GitHub', url: '#', color: 'text-gray-800' },
+                { icon: <FaLinkedin />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/lucas-cao-a08a6b332', color: 'text-blue-600' },
                 { icon: <FaEnvelope />, label: 'Email', url: 'mailto:lucascao1018@gmail.com', color: 'text-red-500' },
               ].map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.url}
+                  target={social.label === 'LinkedIn' ? '_blank' : undefined}
+                  rel={social.label === 'LinkedIn' ? 'noopener noreferrer' : undefined}
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   whileTap={{ scale: 0.9 }}
                   className={`w-12 h-12 rounded-kawaii bg-white/80 backdrop-blur-sm flex items-center justify-center text-2xl shadow-kawaii hover:shadow-kawaii-lg transition-all ${social.color}`}

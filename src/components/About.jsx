@@ -1,11 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { FcAbout, FcGraduationCap, FcIdea, FcMindMap, FcSettings, FcStatistics, FcCheckmark, FcFlashOn, FcGlobe, FcBriefcase } from 'react-icons/fc';
+import { motion, useInView } from 'framer-motion';
+import { FcGraduationCap, FcGlobe, FcBriefcase, FcMindMap, FcCommandLine, FcDatabase, FcServices, FcElectronics } from 'react-icons/fc';
 import resumeSvg from '../assets/resume/resume-not-css.svg?raw';
 import '../assets/resume/resume-styles.css';
 
 const About = () => {
   const sectionsRef = useRef([]);
   const aboutSectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const isTitleInView = useInView(titleRef, { once: true, amount: 0.2 });
 
   // Intersection Observer for scroll-triggered visibility
   useEffect(() => {
@@ -20,8 +23,8 @@ const About = () => {
         });
       },
       {
-        threshold: 0.5, // 当元素50%可见时触发
-        rootMargin: '-20% 0px -20% 0px' // 只有在视窗中心区域才高亮
+        threshold: 0.3, 
+        rootMargin: '-10% 0px -10% 0px'
       }
     );
 
@@ -44,122 +47,135 @@ const About = () => {
       content: (
         <div className="space-y-4">
           <p className="text-xl text-gray-700 font-medium leading-relaxed">
-            Full Stack Developer crafting AI-powered web experiences with modern technologies and creative solutions.
+            I am a Full Stack Developer and Master of IT candidate at UNSW, specializing in building modern, AI-integrated web applications.
+          </p>
+          <p className="text-gray-600">
+            Passionate about delivering clean, maintainable code and architecting scalable solutions that solve real-world business challenges.
           </p>
         </div>
       )
     },
     {
-      id: 'journey',
-      title: '🎓 My Journey',
-      content: (
-        <div className="space-y-4 text-gray-600 leading-relaxed text-lg">
-          <p>
-            Currently pursuing <strong className="text-kawaii-purple-dark">Master of IT at UNSW</strong> with Distinction, 
-            I'm building the future of AI-powered applications at <strong className="text-kawaii-blue-dark">JobGen.AI</strong>.
-          </p>
-          <p>
-            My journey started with Environmental Engineering, where I learned to approach 
-            complex problems systematically. Now, I combine that analytical mindset with 
-            modern web technologies to create solutions that matter.
-          </p>
-          <p>
-            I specialize in <strong className="text-kawaii-cyan-dark">migrating legacy systems</strong> to modern architectures, 
-            engineering autonomous AI agents, and building intuitive user experiences that drive engagement.
-          </p>
-          <div className="mt-6 p-5 bg-gradient-to-br from-kawaii-lavender/20 to-kawaii-mint/20 rounded-kawaii border-2 border-kawaii-purple/20">
-            <div className="flex items-start gap-3">
-              <span className="text-2xl">💡</span>
-              <div>
-                <p className="font-semibold text-gray-800 mb-1">Fun Fact</p>
-                <p className="text-sm text-gray-700">
-                  I increased job data extraction accuracy by <strong className="text-kawaii-purple-dark">50%</strong> by replacing 
-                  static parsing with Playwright for dynamic content rendering!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'achievements',
-      title: '📊 Achievements',
-      content: (
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div className="card-kawaii text-center hover:scale-105 transition-all duration-300 cursor-default">
-            <div className="mb-3 flex justify-center"><FcStatistics className="text-4xl" /></div>
-            <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark to-kawaii-purple-dark mb-2">50%</div>
-            <div className="text-sm font-medium text-gray-600">Performance Boost</div>
-          </div>
-          <div className="card-kawaii text-center hover:scale-105 transition-all duration-300 cursor-default">
-            <div className="mb-3 flex justify-center"><FcFlashOn className="text-4xl" /></div>
-            <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark to-kawaii-purple-dark mb-2">30%</div>
-            <div className="text-sm font-medium text-gray-600">Reduced Downtime</div>
-          </div>
-          <div className="card-kawaii text-center hover:scale-105 transition-all duration-300 cursor-default">
-            <div className="mb-3 flex justify-center"><FcCheckmark className="text-4xl" /></div>
-            <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark to-kawaii-purple-dark mb-2">100%</div>
-            <div className="text-sm font-medium text-gray-600">Client Satisfaction</div>
-          </div>
-          <div className="card-kawaii text-center hover:scale-105 transition-all duration-300 cursor-default">
-            <div className="mb-3 flex justify-center"><FcIdea className="text-4xl" /></div>
-            <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark to-kawaii-purple-dark mb-2">15+</div>
-            <div className="text-sm font-medium text-gray-600">Projects Delivered</div>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'skills',
-      title: '⚙️ Technical Skills',
+      id: 'experience',
+      title: '💼 Professional Experience',
       content: (
         <div className="space-y-6">
-          {[
-            { name: 'React/Next.js', level: 95, color: 'from-kawaii-blue to-kawaii-purple' },
-            { name: 'Node.js/Express', level: 90, color: 'from-kawaii-mint to-kawaii-blue' },
-            { name: 'Python/AI', level: 85, color: 'from-kawaii-purple to-kawaii-cyan' },
-            { name: 'TypeScript', level: 88, color: 'from-kawaii-blue to-kawaii-purple' },
-            { name: 'AWS/Docker', level: 80, color: 'from-kawaii-cyan to-kawaii-mint' },
-          ].map((skill, index) => (
-            <div key={skill.name} className="group">
-              <div className="flex justify-between mb-3">
-                <span className="font-semibold text-gray-800 group-hover:text-kawaii-purple-dark transition-colors">
-                  {skill.name}
-                </span>
-                <span className="font-bold text-kawaii-purple-dark">
-                  {skill.level}%
-                </span>
+          {/* JobGen.AI */}
+          <div className="p-6 bg-gradient-to-br from-kawaii-blue/10 to-kawaii-purple/10 rounded-kawaii border-l-4 border-kawaii-blue shadow-sm hover:shadow-kawaii-lg transition-all">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-kawaii bg-white flex items-center justify-center shadow-sm">
+                  <FcBriefcase className="text-3xl" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-xl text-gray-800">Full Stack Developer Intern</h4>
+                  <span className="text-kawaii-blue-dark font-semibold">@ JobGen.AI</span>
+                </div>
               </div>
-              <div className="h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
-                <div 
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out shadow-sm`}
-                  style={{ width: `${skill.level}%` }}
-                />
+              <div className="flex flex-col md:items-end">
+                <span className="text-xs px-3 py-1 bg-green-100 text-green-700 font-bold rounded-full mb-1 w-fit">
+                  Current • Sydney
+                </span>
+                <span className="text-xs text-gray-500 font-medium">02/2024 - Present</span>
               </div>
             </div>
-          ))}
+            
+            <ul className="space-y-3 text-gray-600 text-sm leading-relaxed">
+              <li className="flex gap-2">
+                <span className="text-kawaii-blue mt-1">▹</span>
+                <span>
+                  <strong>Core Architecture Migration:</strong> Spearheading the migration from a legacy No-Code prototype to a scalable <strong>React.js ecosystem</strong>, redesigning the UI/UX for enhanced user engagement.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-kawaii-blue mt-1">▹</span>
+                <span>
+                  <strong>AI Agent Engineering:</strong> Engineered autonomous web scraping agents using <strong>Playwright</strong> to handle dynamic content, increasing job data extraction accuracy by <strong>50%</strong>.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-kawaii-blue mt-1">▹</span>
+                <span>
+                  <strong>3D & Interactive Modules:</strong> Developed an immersive 3D Mock Interview environment using <strong>Three.js</strong> and Node.js, featuring real-time character interactions.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-kawaii-blue mt-1">▹</span>
+                <span>
+                  <strong>System Optimization:</strong> Redesigned RESTful APIs and implemented an SEO-friendly Blog module to drive organic traffic growth.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Tianjin Fusionsoft */}
+          <div className="p-6 bg-white/60 rounded-kawaii border-l-4 border-gray-300 hover:border-kawaii-mint transition-all">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-kawaii bg-white flex items-center justify-center shadow-sm">
+                  <FcMindMap className="text-3xl" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-gray-700">Web Developer Intern</h4>
+                  <span className="text-gray-600 font-medium">@ Tianjin Fusionsoft</span>
+                </div>
+              </div>
+              <span className="text-xs text-gray-500 font-medium">11/2024 - 03/2025</span>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Developed a city digitalization platform using <strong>Java Spring Boot</strong> and <strong>Vue3</strong>. 
+              Optimized MySQL schemas and facilitated the migration to Alibaba Cloud, successfully reducing system downtime by <strong>30%</strong>.
+            </p>
+          </div>
         </div>
       )
     },
     {
-      id: 'tools',
-      title: '🛠️ Tools & Tech',
+      id: 'tech-stack',
+      title: '🛠️ Technical Arsenal',
       content: (
-        <div className="flex flex-wrap gap-3">
-          {[
-            'React', 'Vue.js', 'Three.js', 'TailwindCSS',
-            'Node.js', 'Express', 'Spring Boot', '.NET Core',
-            'MongoDB', 'PostgreSQL', 'Redis',
-            'Docker', 'AWS', 'Git', 'Playwright'
-          ].map((tool) => (
-            <span
-              key={tool}
-              className="px-4 py-2 bg-white/90 rounded-kawaii text-sm font-medium text-gray-700 shadow-kawaii hover:shadow-kawaii-lg hover:scale-110 hover:-rotate-2 transition-all border border-kawaii-blue/30 cursor-default"
-            >
-              {tool}
-            </span>
-          ))}
+        <div className="grid gap-6">
+          {/* Languages & Frameworks */}
+          <div>
+            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <FcCommandLine /> Languages & Frameworks
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {['JavaScript (ES6+)', 'TypeScript', 'Python', 'Java', 'C#', 'React', 'Next.js', 'Vue.js', 'TailwindCSS', 'Node.js', 'Express', '.NET Core', 'Spring Boot'].map(skill => (
+                <span key={skill} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-semibold border border-blue-100">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* AI & Data */}
+          <div>
+            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <FcElectronics /> AI & Data Engineering
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {['OpenAI API', 'LLM Integration', 'Playwright', 'Web Scraping', 'Three.js', 'WebGL', 'ECharts'].map(skill => (
+                <span key={skill} className="px-3 py-1 bg-purple-50 text-purple-700 rounded-lg text-xs font-semibold border border-purple-100">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Infrastructure & Tools */}
+          <div>
+            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <FcServices /> Cloud & DevOps
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {['AWS', 'Docker', 'Alibaba Cloud', 'Git', 'CI/CD', 'Redis', 'MySQL', 'PostgreSQL', 'MongoDB'].map(skill => (
+                <span key={skill} className="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-xs font-semibold border border-orange-100">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       )
     },
@@ -167,89 +183,67 @@ const About = () => {
       id: 'education',
       title: '🎓 Education',
       content: (
-        <div className="space-y-5">
-          <div className="group p-4 hover:bg-gradient-to-r hover:from-kawaii-purple/5 hover:to-transparent rounded-kawaii transition-all border-l-4 border-kawaii-purple/30 hover:border-kawaii-purple">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-kawaii bg-white shadow-kawaii flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <FcGraduationCap className="text-2xl" />
-              </div>
-              <div className="flex-1">
-                <h4 className="font-bold text-lg text-gray-800 group-hover:text-kawaii-purple-dark transition-colors">
-                  Master of IT
-                </h4>
-                <p className="text-gray-600 font-medium">University of New South Wales (UNSW)</p>
-                <div className="flex items-center gap-3 mt-2">
-                  <span className="text-xs px-3 py-1 bg-kawaii-purple/20 text-kawaii-purple-dark font-semibold rounded-kawaii">
-                    2024 - 2026
-                  </span>
-                  <span className="text-xs px-3 py-1 bg-kawaii-mint/20 text-kawaii-blue-dark font-semibold rounded-kawaii">
-                    Distinction
-                  </span>
-                </div>
+        <div className="space-y-4">
+          <div className="flex items-start gap-4 p-4 bg-white/50 rounded-kawaii hover:bg-white/80 transition-colors">
+            <div className="w-12 h-12 rounded-kawaii bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+              <FcGraduationCap className="text-2xl" />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-bold text-lg text-gray-800">
+                Master of Information Technology
+              </h4>
+              <p className="text-gray-600 font-medium text-sm">University of New South Wales (UNSW)</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">02/2024 - 01/2026</span>
+                <span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 font-bold rounded">Distinction</span>
               </div>
             </div>
           </div>
 
-          <div className="group p-4 hover:bg-gradient-to-r hover:from-kawaii-mint/5 hover:to-transparent rounded-kawaii transition-all border-l-4 border-kawaii-mint/30 hover:border-kawaii-mint">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-kawaii bg-white shadow-kawaii flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <FcGlobe className="text-2xl" />
-              </div>
-              <div className="flex-1">
-                <h4 className="font-bold text-lg text-gray-800 group-hover:text-kawaii-blue-dark transition-colors">
-                  B.Eng Environmental Engineering
-                </h4>
-                <p className="text-gray-600 font-medium">Kunming University of Science & Technology</p>
-                <div className="flex items-center gap-3 mt-2">
-                  <span className="text-xs px-3 py-1 bg-kawaii-blue/20 text-kawaii-blue-dark font-semibold rounded-kawaii">
-                    2018 - 2022
-                  </span>
-                  <span className="text-xs px-3 py-1 bg-kawaii-cyan/20 text-kawaii-cyan-dark font-semibold rounded-kawaii">
-                    Distinction
-                  </span>
-                </div>
-              </div>
+          <div className="flex items-start gap-4 p-4 bg-white/50 rounded-kawaii hover:bg-white/80 transition-colors">
+            <div className="w-12 h-12 rounded-kawaii bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+              <FcGlobe className="text-2xl" />
             </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'current',
-      title: '💼 Current Role',
-      content: (
-        <div className="p-6 bg-gradient-to-br from-kawaii-blue/5 to-kawaii-purple/5 rounded-kawaii border-2 border-kawaii-purple/20">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-kawaii bg-gradient-to-br from-kawaii-blue/30 to-kawaii-purple/30 flex items-center justify-center">
-              <FcBriefcase className="text-3xl" />
-            </div>
-            <div>
-              <h4 className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark to-kawaii-purple-dark">
-                Full Stack Developer
+            <div className="flex-1">
+              <h4 className="font-bold text-lg text-gray-800">
+                Bachelor Degree
               </h4>
-              <span className="text-sm text-gray-500">@ JobGen.AI</span>
+              <p className="text-gray-600 font-medium text-sm">Kunming University of Science & Technology</p>
+              <div className="flex flex-wrap gap-2 mt-2">
+                <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">09/2018 - 07/2022</span>
+                <span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 font-bold rounded">Distinction</span>
+              </div>
             </div>
           </div>
-          <p className="text-gray-600 leading-relaxed">
-            Building AI-powered recruitment solutions, migrating legacy systems to modern React architecture, 
-            and engineering autonomous agents for intelligent job matching.
-          </p>
         </div>
       )
-    },
+    }
   ];
 
   return (
     <section 
       id="about" 
       ref={aboutSectionRef}
-      className="relative bg-gradient-to-br from-white via-kawaii-lavender/10 to-white w-full"
+      className="relative w-full"
     >
+      {/* Title */}
+      <motion.div
+        ref={titleRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="text-center py-12 md:py-16 px-6"
+      >
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-kawaii-blue-dark via-kawaii-purple-dark to-kawaii-cyan-dark">
+          Know better about me
+        </h2>
+      </motion.div>
+
       {/* 核心布局优化：Flex容器，align-items: start (默认不拉伸)，实现左侧sticky + 右侧滚动 */}
       <div className="w-full flex flex-col lg:flex-row lg:items-start lg:pl-20 reltive">
         
         {/* Left: Sticky Illustration */}
-        <div className="hidden lg:block lg:w-2/5 lg:pr-12 sticky top-1/3 h-fit self-start z-10">
+        <div className="hidden lg:block lg:w-2/5 lg:pr-12 sticky top-1/4 h-fit self-start z-10">
           <div className="w-full max-w-[480px] mx-auto px-10 py-16 flex items-center justify-center">
             <div 
               className="w-full drop-shadow-2xl"
@@ -265,7 +259,13 @@ const About = () => {
               <li 
                 key={section.id}
                 ref={(el) => (sectionsRef.current[index] = el)}
-                className="min-h-screen flex items-center justify-center py-12 scroll-section"
+                className={`
+                  flex flex-col scroll-section
+                  ${index === 0 
+                    ? 'pt-20 pb-20 justify-start'   // 第一张：顶部无留白，底部留点距离
+                    : 'min-h-[60vh] justify-center py-10' // 后续：只占 60% 屏高，减少留白
+                  }
+                `}
               >
                 <div className="w-full card-kawaii group hover:shadow-kawaii-lg transition-all duration-300">
                   <div className="flex items-center gap-3 mb-6">

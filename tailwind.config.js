@@ -32,8 +32,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'sans-serif'],
+        sans: ['Quicksand', 'system-ui', 'sans-serif'],
+        display: ['Quicksand', 'sans-serif'],
       },
       borderRadius: {
         'kawaii': '1.5rem',
