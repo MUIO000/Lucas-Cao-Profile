@@ -21,7 +21,7 @@ function App() {
       <footer className="py-8 text-center">
         <div className="container mx-auto px-6">
           <p className="text-gray-600">
-            Made with 💜 by Lucas Cao • © 2024
+            Made with 💜 by Lucas Cao • © 2025
           </p>
         </div>
       </footer>

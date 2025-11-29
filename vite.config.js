@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: './', // 使用相对路径，这样可以直接打开 HTML 文件
   server: {
     port: 3000,
     open: true
