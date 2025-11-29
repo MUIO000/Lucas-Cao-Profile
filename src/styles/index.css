@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-kawaii-purple-light via-kawaii-blue-light to-kawaii-pink-light;
+    @apply min-h-screen;
+    @apply text-gray-800;
+    @apply font-sans;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-kawaii-lavender/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-kawaii-purple/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-kawaii-purple/70;
+  }
+}
+
+@layer components {
+  /* Kawaii 按钮样式 */
+  .btn-kawaii {
+    @apply px-8 py-4 rounded-kawaii font-semibold;
+    @apply bg-gradient-to-r from-kawaii-pink to-kawaii-purple;
+    @apply text-white shadow-kawaii;
+    @apply transition-all duration-300;
+    @apply hover:shadow-kawaii-lg hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .btn-kawaii-outline {
+    @apply px-8 py-4 rounded-kawaii font-semibold;
+    @apply bg-white/80 backdrop-blur-sm;
+    @apply border-2 border-kawaii-purple;
+    @apply text-kawaii-purple shadow-kawaii;
+    @apply transition-all duration-300;
+    @apply hover:bg-kawaii-purple hover:text-white;
+    @apply hover:shadow-kawaii-lg hover:scale-105;
+  }
+
+  /* Kawaii 卡片样式 */
+  .card-kawaii {
+    @apply bg-white/60 backdrop-blur-xl;
+    @apply rounded-kawaii-lg p-6;
+    @apply border-2 border-white/40;
+    @apply shadow-kawaii;
+    @apply transition-all duration-300;
+  }
+
+  .card-kawaii:hover {
+    @apply shadow-kawaii-lg scale-105;
+    @apply border-kawaii-pink/40;
+  }
+
+  /* Glassmorphism 效果 */
+  .glass-kawaii {
+    @apply bg-white/40 backdrop-blur-2xl;
+    @apply border border-white/60;
+    @apply shadow-kawaii;
+  }
+
+  /* 发光文字效果 */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 182, 217, 0.6),
+                 0 0 40px rgba(155, 159, 255, 0.4);
+  }
+
+  /* 渐变文字 */
+  .text-gradient-kawaii {
+    @apply bg-gradient-to-r from-kawaii-pink via-kawaii-purple to-kawaii-blue;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* 可爱的粗边框 */
+  .outline-kawaii {
+    @apply relative;
+  }
+
+  .outline-kawaii::before {
+    content: '';
+    @apply absolute inset-0 -z-10;
+    @apply rounded-kawaii;
+    @apply border-4 border-kawaii-purple/30;
+    transform: translate(-4px, -4px);
+  }
+}
+
+/* 动画效果 */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-slide-left {
+    animation: slideLeft 0.8s ease-out;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.8s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 鼠标光标效果（可选） */
+.cursor-kawaii {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="%23FFB6D9" opacity="0.6"/></svg>'), auto;
+}
+
+/* Software Code Testing SVG Animations */
+svg#freepik_stories-software-code-testing:not(.animated) .animable {
+  opacity: 0;
+}
+
+svg#freepik_stories-software-code-testing.animated #freepik--background-complete--inject-42 {
+  animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) lightSpeedRight, 1.5s Infinite linear floating;
+  animation-delay: 0s, 1s;
+}
+
+svg#freepik_stories-software-code-testing.animated #freepik--Shadow--inject-42 {
+  animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideLeftSvg;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-software-code-testing.animated #freepik--Device--inject-42 {
+  animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) lightSpeedLeft;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-software-code-testing.animated #freepik--Bugs--inject-42 {
+  animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideDownSvg;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-software-code-testing.animated #freepik--character-2--inject-42 {
+  animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) lightSpeedRight, 1.5s Infinite linear wind;
+  animation-delay: 0s, 1s;
+}
+
+svg#freepik_stories-software-code-testing.animated #freepik--character-1--inject-42 {
+  animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideRightSvg, 1.5s Infinite linear wind;
+  animation-delay: 0s, 1s;
+}
+
+@keyframes lightSpeedRight {
+  from {
+    transform: translate3d(50%, 0, 0) skewX(-20deg);
+    opacity: 0;
+  }
+  60% {
+    transform: skewX(10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: skewX(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slideLeftSvg {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes lightSpeedLeft {
+  from {
+    transform: translate3d(-50%, 0, 0) skewX(20deg);
+    opacity: 0;
+  }
+  60% {
+    transform: skewX(-10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: skewX(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideDownSvg {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wind {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+
+@keyframes slideRightSvg {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll-triggered section visibility - About page */
+.scroll-section {
+  opacity: 0;
+  transform: scale(0.9);
+  filter: blur(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+}
+
+.scroll-section.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  pointer-events: auto;
+}
+
