@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FcIdea } from 'react-icons/fc';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
-import softwareTestingSvg from '../assets/developer-activity/developer-activity-not-css.svg?raw';
+import Spline from '@splinetool/react-spline';
 import '../assets/developer-activity/developer-activity-styles.css';
 import Typewriter from './Typewriter';
 
@@ -137,12 +137,16 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Kawaii Illustration */}
-          <div className="relative flex justify-center md:justify-end">
-            <div 
-              className="w-full max-w-[500px] h-auto drop-shadow-2xl"
-              dangerouslySetInnerHTML={{ __html: softwareTestingSvg }}
-            />
+          {/* Right: 3D Spline Illustration */}
+          <div className="relative flex justify-center md:justify-end lg:scale-125">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
+              className="w-full aspect-square drop-shadow-2xl rounded-3xl overflow-hidden bg-transparent"
+            >
+              <Spline scene="https://prod.spline.design/9x3RXcbJvtWC8DmQ/scene.splinecode" />
+            </motion.div>
 
             {/* Background Decorative Elements */}
             <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-kawaii-blue/20 via-kawaii-purple/20 to-kawaii-cyan/20 rounded-full blur-3xl animate-pulse-slow"></div>
